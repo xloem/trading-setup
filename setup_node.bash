@@ -28,16 +28,13 @@ APT_PKGS="\
       libtool \
       doxygen \
       ca-certificates \
-      fish"
-#sudo apt-get install $APT_PKGS
+      fish \
+      make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git libncurses-dev build-essential kernel-package libncurses-dev doxygen libboost-all-dev autotools-dev automake"
+sudo apt-get install $APT_PKGS
 git submodule update --init --recursive
 mkdir -p bitshares-core-build
 pushd bitshares-core-build
-cmake ../bitshares-core/
-#make witness_node cli_wallet get_dev_key
-make witness_node cli_wallet get_dev_key
+if ! [ -e CMakeCache.txt ]; then cmake ../bitshares-core/; fi
+make witness_node cli_wallet
 popd
 bitshares-core-build/programs/witness_node/witness_node --rpc-endpoint=127.0.0.1:8090
-pip3 install -r DEXBot/requirements.txt
-pip3 install -r DEXBot/requirements-dev.txt
-DEXBot/cli.py --configfile config/dexbot-config.yml configure
