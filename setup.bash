@@ -35,5 +35,8 @@ mkdir -p bitshares-core-build
 pushd bitshares-core-build
 cmake ../bitshares-core/
 #make witness_node cli_wallet get_dev_key
+make cli_wallet get_dev_key
 popd
+pip3 install -r DEXBot/requirements.txt
+pip3 install -r DEXBot/requirements-dev.txt
 DEXBot/cli.py --configfile config/dexbot-config.yml configure
