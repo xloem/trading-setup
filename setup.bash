@@ -36,4 +36,5 @@ pushd bitshares-core-build
 cmake ../bitshares-core/
 #make witness_node cli_wallet get_dev_key
 popd
+#bitshares-core-build/programs/witness_node/witness_node --rpc-endpoint=127.0.0.1:8090
 DEXBot/cli.py --configfile config/dexbot-config.yml configure
