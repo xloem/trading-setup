@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-sudo apt-get install -y \
+APT_PKGS="\
       g++ \
       autoconf \
       cmake \
@@ -22,11 +22,12 @@ sudo apt-get install -y \
       libtool \
       doxygen \
       ca-certificates \
-      fish
+      fish"
+#sudo apt-get install $APT_PKGS
 git submodule update --init --recursive
 mkdir -p bitshares-core-build
 pushd bitshares-core-build
 cmake ../bitshares-core/
 #make
 popd
-DEXBot/cli.py --configfile config/config.yml configure
+DEXBot/cli.py --configfile config/dexbot-config.yml configure
