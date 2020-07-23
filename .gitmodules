@@ -1,0 +1,6 @@
+[submodule "DEXBot"]
+	path = DEXBot
+	url = https://github.com/CodaONE/DEXBot.git
+[submodule "bitshares-core"]
+	path = bitshares-core
+	url = https://github.com/bitshares/bitshares-core.git
