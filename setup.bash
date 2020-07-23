@@ -33,11 +33,9 @@ APT_PKGS="\
 git submodule update --init --recursive
 mkdir -p bitshares-core-build
 pushd bitshares-core-build
-cmake ../bitshares-core/
-#make witness_node cli_wallet get_dev_key
-make witness_node cli_wallet get_dev_key
+if ! [ -e CMakeCache.txt ]; then cmake ../bitshares-core/ -DCMAKE_INSTALL_PREFIX=../prefix; fi
+make cli_wallet
 popd
-bitshares-core-build/programs/witness_node/witness_node --rpc-endpoint=127.0.0.1:8090
 pip3 install -r DEXBot/requirements.txt
 pip3 install -r DEXBot/requirements-dev.txt
 DEXBot/cli.py --configfile config/dexbot-config.yml configure

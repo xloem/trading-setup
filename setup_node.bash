@@ -32,9 +32,16 @@ APT_PKGS="\
       make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git libncurses-dev build-essential libncurses-dev doxygen libboost-all-dev autotools-dev automake"
 sudo apt-get install $APT_PKGS
 git submodule update --init --recursive
+pushd bitshares-core
+SYSTEM="$(echo $(lsb_release -ics; uname -m; git describe --tags) | tr ' ' '-')"
+popd
 mkdir -p bitshares-core-build
 pushd bitshares-core-build
-if ! [ -e CMakeCache.txt ]; then cmake ../bitshares-core/; fi
-make witness_node cli_wallet
+if ! [ -e CMakeCache.txt ]
+then
+	cmake ../bitshares-core/
+fi
+mkdir -p ../bin/"$SYSTEM"
+make witness_node cli_wallet && cp programs/witness_node/witness_node programs/cli_wallet/cli_wallet ../bin/"$SYSTEM"/
 popd
 bitshares-core-build/programs/witness_node/witness_node --rpc-endpoint=127.0.0.1:8090
