@@ -29,7 +29,7 @@ APT_PKGS="\
       doxygen \
       ca-certificates \
       fish \
-      make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git libncurses-dev build-essential kernel-package libncurses-dev doxygen libboost-all-dev autotools-dev automake"
+      make libbz2-dev libdb++-dev libdb-dev libssl-dev openssl libreadline-dev autoconf libtool git libncurses-dev build-essential libncurses-dev doxygen libboost-all-dev autotools-dev automake"
 sudo apt-get install $APT_PKGS
 git submodule update --init --recursive
 mkdir -p bitshares-core-build
