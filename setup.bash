@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+
+# NOTE:
+#	- dexbot connects to a list of hardcoded public nodes stored in its config file
+#	if some of these don't respond, it could delay very long booting.
+
 APT_PKGS="\
       g++ \
       autoconf \
@@ -28,6 +33,6 @@ git submodule update --init --recursive
 mkdir -p bitshares-core-build
 pushd bitshares-core-build
 cmake ../bitshares-core/
-#make
+#make witness_node cli_wallet get_dev_key
 popd
 DEXBot/cli.py --configfile config/dexbot-config.yml configure
