@@ -3,6 +3,7 @@
 # NOTE:
 #	- dexbot connects to a list of hardcoded public nodes stored in its config file
 #	if some of these don't respond, it could delay very long booting.
+#	they can be removed from the configfile to prevent connection to them.
 
 APT_PKGS="\
       g++ \
