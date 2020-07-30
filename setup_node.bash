@@ -42,6 +42,6 @@ then
 	cmake ../bitshares-core/
 fi
 mkdir -p ../bin/"$SYSTEM"
-make witness_node cli_wallet && cp programs/witness_node/witness_node programs/cli_wallet/cli_wallet ../bin/"$SYSTEM"/
+make witness_node cli_wallet && cp -v programs/witness_node/witness_node programs/cli_wallet/cli_wallet ../bin/"$SYSTEM"/
 popd
 bitshares-core-build/programs/witness_node/witness_node --rpc-endpoint=127.0.0.1:8090
